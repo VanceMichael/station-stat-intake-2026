@@ -1,3 +1,4 @@
+import { newDispatcher } from './source-requests.mjs'
 import http from 'node:http'
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
@@ -60,7 +61,7 @@ function pageOf(url, name, edition) {
 
 export function createSource() {
   let selected = source.editions[0]
-  const attempts = new Map()
+  const dispatch = newDispatcher(source.jobs)
   const server = http.createServer(async (request, response) => {
     try {
       const url = new URL(request.url, 'http://localhost')
@@ -71,22 +72,10 @@ export function createSource() {
         selected = release
         return json(response, 200, { edition: selected.edition })
       }
-      if (source.jobs && url.pathname === '/requests') {
-        const key = url.searchParams.get('client')
-        const raw = selected.streams.jobs?.find(row => row[0] === key)
-        if (request.method === 'GET') {
-          const visible = raw && (!source.jobs.ackLost.includes(key) || attempts.has(key))
-          return visible ? json(response, 200, { status: 'received', receipt: raw }) : json(response, 404, { status: 'unknown' })
-        }
-        if (request.method === 'POST' && raw) {
-          if (!attempts.has(key) && source.jobs.ackLost.includes(key)) {
-            attempts.set(key, true)
-            request.socket.destroy()
-            return
-          }
-          return json(response, 202, { status: 'received', receipt: raw })
-        }
-        return json(response, 422, { error: '未配置该工作项' })
+      if (url.pathname === '/requests') {
+        const result = dispatch(request, url, selected)
+        if (!result.code) { request.socket.destroy(); return }
+        return json(response, result.code, result.json)
       }
       if (request.method !== 'GET') return json(response, 405, { error: '不支持该操作' })
       if (url.pathname === '/catalog') {

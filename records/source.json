@@ -31,6 +31,15 @@
             "3",
             "4",
             "training"
+          ],
+          [
+            "T",
+            "member",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning"
           ]
         ],
         "permit": [
@@ -62,6 +71,16 @@
             "3",
             "4",
             "training",
+            "allowed"
+          ],
+          [
+            "PD",
+            "T",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning",
             "allowed"
           ]
         ],
@@ -144,6 +163,15 @@
             "3",
             "4",
             "training"
+          ],
+          [
+            "T",
+            "member",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning"
           ]
         ],
         "permit": [
@@ -175,6 +203,16 @@
             "3",
             "4",
             "training",
+            "allowed"
+          ],
+          [
+            "PD",
+            "T",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning",
             "allowed"
           ]
         ],
@@ -214,6 +252,14 @@
             "j3",
             "PB",
             "accepted"
+          ],
+          [
+            "s-a",
+            "A",
+            "day2",
+            "j4",
+            "PC",
+            "accepted"
           ]
         ],
         "rows": [
@@ -234,9 +280,16 @@
           [
             "j3",
             "2",
-            "5",
-            "16",
+            "4",
+            "12",
             "z3"
+          ],
+          [
+            "j3",
+            "4",
+            "5",
+            "4",
+            "z4"
           ]
         ],
         "issued": [
@@ -245,6 +298,208 @@
             "B",
             "j2",
             "z2"
+          ]
+        ],
+        "withdraw": [
+          [
+            "T",
+            "B",
+            "count",
+            "cancel"
+          ]
+        ]
+      }
+    },
+    {
+      "edition": "r3",
+      "streams": {
+        "requests": [
+          [
+            "R",
+            "member",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "R",
+            "member",
+            "B",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "S",
+            "other",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training"
+          ],
+          [
+            "T",
+            "member",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning"
+          ]
+        ],
+        "permit": [
+          [
+            "PA",
+            "R",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PB",
+            "R",
+            "B",
+            "count",
+            "2",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PC",
+            "S",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training",
+            "allowed"
+          ],
+          [
+            "PD",
+            "T",
+            "B",
+            "count",
+            "3",
+            "6",
+            "planning",
+            "allowed"
+          ]
+        ],
+        "quota": [
+          [
+            "A",
+            "day1",
+            "1"
+          ],
+          [
+            "B",
+            "day1",
+            "2"
+          ],
+          [
+            "A",
+            "day2",
+            "1"
+          ],
+          [
+            "B",
+            "day2",
+            "1"
+          ]
+        ],
+        "jobs": [
+          [
+            "r-a",
+            "A",
+            "day1",
+            "j1",
+            "PA",
+            "ready"
+          ],
+          [
+            "r-b",
+            "B",
+            "day1",
+            "j2",
+            "PB",
+            "ready"
+          ],
+          [
+            "r-b2",
+            "B",
+            "day1",
+            "j3",
+            "PB",
+            "ready"
+          ],
+          [
+            "s-a",
+            "A",
+            "day2",
+            "j4",
+            "PC",
+            "ready"
+          ]
+        ],
+        "rows": [
+          [
+            "j1",
+            "1",
+            "5",
+            "3",
+            "z1"
+          ],
+          [
+            "j2",
+            "1",
+            "5",
+            "22",
+            "z2"
+          ],
+          [
+            "j3",
+            "2",
+            "4",
+            "12",
+            "z3"
+          ],
+          [
+            "j3",
+            "4",
+            "5",
+            "4",
+            "z4"
+          ],
+          [
+            "j4",
+            "3",
+            "4",
+            "8",
+            "z5"
+          ]
+        ],
+        "issued": [
+          [
+            "R",
+            "B",
+            "j2",
+            "z2"
+          ]
+        ],
+        "withdraw": [
+          [
+            "T",
+            "B",
+            "count",
+            "cancel"
           ]
         ]
       }
@@ -271,12 +526,21 @@
     },
     "issued": {
       "key": 0
+    },
+    "withdraw": {
+      "key": 0
     }
   },
   "browser": false,
   "jobs": {
     "ackLost": [
       "r-a"
+    ],
+    "pending": [
+      "s-a"
+    ],
+    "previous": [
+      "r-b"
     ]
   }
 }

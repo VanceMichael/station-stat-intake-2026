@@ -8,4 +8,4 @@ npm run source
 
 另开终端运行 `npm test` 可检查来源契约。测试以独立临时端口启动来源。
 
-两版业务记录和取件字段见 [资料格式](source/formats.md)。`POST /control?edition=r2` 模拟业务方更换当期资料，切回 `r1` 可重新查看初始来源。
+业务记录各版和取件字段见 [资料格式](source/formats.md)。`POST /control?edition=r2` 模拟业务方更换当期资料，`r3` 表示后续一期。单独重启服务可以重置来源侧会话。

@@ -44,4 +44,12 @@ test('源站受理发生在回执传输失败之前', async t => {
   const response = await fetch(route)
   assert.equal(response.status,200)
   assert.equal((await response.json()).receipt[3],'j1')
+  await fetch(root + '/control?edition=r2',{method:'POST'})
+  const second = root + '/requests?client=s-a'
+  assert.equal((await fetch(second,{method:'POST'})).status,409)
+  assert.equal((await fetch(second)).status,202)
+  await fetch(root + '/control?edition=r3',{method:'POST'})
+  const receipt = await fetch(second,{method:'POST'})
+  assert.equal(receipt.status,202)
+  assert.equal((await receipt.json()).receipt[3],'j4')
 })
