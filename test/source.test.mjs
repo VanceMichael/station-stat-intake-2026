@@ -15,11 +15,11 @@ test('来源资料支持修订隔离与逐页领取', async t => {
   const { root } = await listen(t)
   const update = await fetch(root + '/control?edition=r2', {method:'POST'})
   assert.equal((await update.json()).edition, 'r2')
-  let response = await fetch(root + '/records/' + "rows")
+  let response = await fetch(root + '/records/' + "permit")
   assert.equal(response.status, 200)
   assert.equal(response.headers.get('X-Edition'), 'r2')
   const etag = response.headers.get('ETag')
-  const cached = await fetch(root + '/records/' + "rows", {headers:{'If-None-Match':etag}})
+  const cached = await fetch(root + '/records/' + "permit", {headers:{'If-None-Match':etag}})
   assert.equal(cached.status, 304)
   const rows = []
   for (;;) {
@@ -34,7 +34,7 @@ test('来源资料支持修订隔离与逐页领取', async t => {
     assert.equal(response.status, 200)
   }
   assert.equal(new Set(rows).size,rows.length)
-  assert.ok(rows.some(row => row.split('\t').includes("z3")))
+  assert.ok(rows.some(row => row.split('\t').includes("2")))
 })
 
 test('源站受理发生在回执传输失败之前', async t => {
@@ -52,4 +52,8 @@ test('源站受理发生在回执传输失败之前', async t => {
   const receipt = await fetch(second,{method:'POST'})
   assert.equal(receipt.status,202)
   assert.equal((await receipt.json()).receipt[3],'j4')
+  const valid = await fetch(root + '/requests?client=u-b',{method:'POST'})
+  assert.equal((await valid.json()).receipt[3],'j6')
+  const full = await fetch(root + '/requests?client=t-b',{method:'POST'})
+  assert.equal(full.status,429)
 })

@@ -27,8 +27,8 @@ function editionData(name) {
   return source.editions.find(release => release.edition === name)
 }
 
-function pageOf(url, name, edition) {
-  const allRows = edition.streams[name]
+function pageOf(url, name, edition, dispatch) {
+  const allRows = dispatch.available(edition.streams, name)
   if (!allRows) return { code: 404 }
   const key = url.searchParams.get('key')
   const from = url.searchParams.get('from')
@@ -73,7 +73,7 @@ export function createSource() {
         return json(response, 200, { edition: selected.edition })
       }
       if (url.pathname === '/requests') {
-        const result = dispatch(request, url, selected)
+        const result = dispatch.viaDesk(request, url, selected)
         if (!result.code) { request.socket.destroy(); return }
         return json(response, result.code, result.json)
       }
@@ -85,7 +85,7 @@ export function createSource() {
       if (match) {
         const edition = editionData(url.searchParams.get('edition') || selected.edition)
         if (!edition) return json(response, 404, { error: '没有该资料版' })
-        const page = pageOf(url, match[1], edition)
+        const page = pageOf(url, match[1], edition, dispatch)
         if (page.code !== 200) return json(response, page.code, { error: '资料、筛选范围或继续标记无效' })
         const headers = { ...page.headers, 'X-Edition': edition.edition, ETag: '"' + page.fingerprint + '"' }
         if (request.headers['if-none-match'] === headers.ETag) {

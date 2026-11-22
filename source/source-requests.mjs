@@ -1,7 +1,7 @@
 export function newDispatcher(preset) {
   const accepted = new Set(preset.previous)
   const seen = new Set()
-  return function viaDesk(request, url, edition) {
+  function viaDesk(request, url, edition) {
     const key = url.searchParams.get('client')
     const data = edition.streams
     const row = data.jobs.find(row => row[0] === key)
@@ -25,4 +25,13 @@ export function newDispatcher(preset) {
     if (preset.ackLost.includes(key)) return {code:0}
     return {code:202, json:{status:'received', receipt:row}}
   }
+  function available(streams, name) {
+    if (name === 'jobs') return streams.jobs.filter(job => accepted.has(job[0]))
+    if (name === 'rows') {
+      const visible = new Set(streams.jobs.filter(job => accepted.has(job[0])).map(job => job[3]))
+      return streams.rows.filter(row => visible.has(row[0]))
+    }
+    return streams[name]
+  }
+  return {viaDesk, available}
 }

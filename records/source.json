@@ -40,6 +40,15 @@
             "3",
             "6",
             "planning"
+          ],
+          [
+            "U",
+            "member",
+            "B",
+            "count",
+            "5",
+            "7",
+            "planning"
           ]
         ],
         "permit": [
@@ -80,6 +89,16 @@
             "count",
             "3",
             "6",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PE",
+            "U",
+            "B",
+            "count",
+            "5",
+            "7",
             "planning",
             "allowed"
           ]
@@ -172,6 +191,15 @@
             "3",
             "6",
             "planning"
+          ],
+          [
+            "U",
+            "member",
+            "B",
+            "count",
+            "5",
+            "7",
+            "planning"
           ]
         ],
         "permit": [
@@ -212,6 +240,16 @@
             "count",
             "3",
             "6",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PE",
+            "U",
+            "B",
+            "count",
+            "5",
+            "7",
             "planning",
             "allowed"
           ]
@@ -349,6 +387,15 @@
             "3",
             "6",
             "planning"
+          ],
+          [
+            "U",
+            "member",
+            "B",
+            "count",
+            "5",
+            "7",
+            "planning"
           ]
         ],
         "permit": [
@@ -389,6 +436,16 @@
             "count",
             "3",
             "6",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PE",
+            "U",
+            "B",
+            "count",
+            "5",
+            "7",
             "planning",
             "allowed"
           ]
@@ -447,6 +504,22 @@
             "j4",
             "PC",
             "ready"
+          ],
+          [
+            "t-b",
+            "B",
+            "day2",
+            "j5",
+            "PD",
+            "accepted"
+          ],
+          [
+            "u-b",
+            "B",
+            "day2",
+            "j6",
+            "PE",
+            "accepted"
           ]
         ],
         "rows": [
@@ -484,6 +557,20 @@
             "4",
             "8",
             "z5"
+          ],
+          [
+            "j5",
+            "3",
+            "6",
+            "11",
+            "z6"
+          ],
+          [
+            "j6",
+            "5",
+            "7",
+            "12",
+            "z7"
           ]
         ],
         "issued": [
