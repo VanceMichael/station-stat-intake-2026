@@ -1,0 +1,282 @@
+{
+  "title": "共享统计申请的配额取数与分项交付",
+  "editions": [
+    {
+      "edition": "r1",
+      "streams": {
+        "requests": [
+          [
+            "R",
+            "member",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "R",
+            "member",
+            "B",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "S",
+            "other",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training"
+          ]
+        ],
+        "permit": [
+          [
+            "PA",
+            "R",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PB",
+            "R",
+            "B",
+            "count",
+            "1",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PC",
+            "S",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training",
+            "allowed"
+          ]
+        ],
+        "quota": [
+          [
+            "A",
+            "day1",
+            "1"
+          ],
+          [
+            "B",
+            "day1",
+            "2"
+          ]
+        ],
+        "jobs": [
+          [
+            "r-a",
+            "A",
+            "day1",
+            "j1",
+            "PA",
+            "accepted"
+          ],
+          [
+            "r-b",
+            "B",
+            "day1",
+            "j2",
+            "PB",
+            "ready"
+          ]
+        ],
+        "rows": [
+          [
+            "j2",
+            "1",
+            "5",
+            "22",
+            "z2"
+          ]
+        ],
+        "issued": [
+          [
+            "R",
+            "B",
+            "j2",
+            "z2"
+          ]
+        ]
+      }
+    },
+    {
+      "edition": "r2",
+      "streams": {
+        "requests": [
+          [
+            "R",
+            "member",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "R",
+            "member",
+            "B",
+            "count",
+            "1",
+            "5",
+            "planning"
+          ],
+          [
+            "S",
+            "other",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training"
+          ]
+        ],
+        "permit": [
+          [
+            "PA",
+            "R",
+            "A",
+            "count",
+            "1",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PB",
+            "R",
+            "B",
+            "count",
+            "2",
+            "5",
+            "planning",
+            "allowed"
+          ],
+          [
+            "PC",
+            "S",
+            "A",
+            "count",
+            "3",
+            "4",
+            "training",
+            "allowed"
+          ]
+        ],
+        "quota": [
+          [
+            "A",
+            "day1",
+            "1"
+          ],
+          [
+            "B",
+            "day1",
+            "2"
+          ]
+        ],
+        "jobs": [
+          [
+            "r-a",
+            "A",
+            "day1",
+            "j1",
+            "PA",
+            "ready"
+          ],
+          [
+            "r-b",
+            "B",
+            "day1",
+            "j2",
+            "PB",
+            "ready"
+          ],
+          [
+            "r-b2",
+            "B",
+            "day1",
+            "j3",
+            "PB",
+            "accepted"
+          ]
+        ],
+        "rows": [
+          [
+            "j1",
+            "1",
+            "5",
+            "3",
+            "z1"
+          ],
+          [
+            "j2",
+            "1",
+            "5",
+            "22",
+            "z2"
+          ],
+          [
+            "j3",
+            "2",
+            "5",
+            "16",
+            "z3"
+          ]
+        ],
+        "issued": [
+          [
+            "R",
+            "B",
+            "j2",
+            "z2"
+          ]
+        ]
+      }
+    }
+  ],
+  "filters": {
+    "requests": {
+      "key": 2,
+      "clock": 4
+    },
+    "permit": {
+      "key": 2,
+      "clock": 4
+    },
+    "quota": {
+      "key": 0
+    },
+    "jobs": {
+      "key": 1
+    },
+    "rows": {
+      "key": 0,
+      "clock": 1
+    },
+    "issued": {
+      "key": 0
+    }
+  },
+  "browser": false,
+  "jobs": {
+    "ackLost": [
+      "r-a"
+    ]
+  }
+}
